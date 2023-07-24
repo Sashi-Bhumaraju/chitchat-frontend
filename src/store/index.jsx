@@ -1,4 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { UsersReducer } from "./slices/UsersSlice";
 
 const customMiddleWare = getDefaultMiddleware({
     serializableCheck: false
@@ -7,8 +8,8 @@ const customMiddleWare = getDefaultMiddleware({
 export const store = configureStore({
     reducer : {
         user  : UsersReducer,
-        tournaments : TournamentsReducer,
-        games : GamesReducer
     },
     middleware: (getDefaultMiddleware) => customMiddleWare,
 })
+
+export * from "./thunks/authentication-thunks/Auth";

@@ -3,16 +3,19 @@ import styles from '../css/Auth.module.css';
 import googleIcon from '../assets/google.png';
 import { auth, provider } from '../firebase-config';
 import { signInWithPopup } from 'firebase/auth';
+import { SignIn } from '../store';
+import UseThunk from '../hooks/UseThunk';
+
 
 
 
 function Auth() { 
 
+  const [runSignInMethod, userData, isLoading, error] = UseThunk(SignIn);
+
   const signintoGoogle = () => {
-    signInWithPopup(auth, provider).then ((data)=>{
-      console.log(data);
-    })
-}
+    runSignInMethod() ;
+  }
 
   return ( 
     <section className={styles.auth_screen}>
