@@ -2,6 +2,7 @@
 
 frontend folder structure
 
+
 ```bash
 chichat-frontend/
 |-- public/
