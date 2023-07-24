@@ -2,6 +2,7 @@
 
 frontend folder structure
 
+```bash
 chichat-frontend/
 |-- public/
 |   |-- index.html
@@ -31,8 +32,7 @@ chichat-frontend/
 |-- package.json
 |-- .gitignore
 |-- README.md
-
-
+```
 **Chichat - A Real-Time Chatting App**
 
 Chichat is a modern and user-friendly real-time chatting application designed to connect people from all around the world. With a seamless and intuitive user interface, Chichat enables users to engage in instant conversations, share thoughts, and connect with friends, family, or new acquaintances. Whether you want to catch up with loved ones, collaborate with colleagues, or make new friends, Chichat provides a secure and enjoyable platform for all your communication needs.
