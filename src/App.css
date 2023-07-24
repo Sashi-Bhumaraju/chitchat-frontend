@@ -1,5 +1,48 @@
 .app {
-  width: 100vw;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Font Sizes for Mobile Devices */
+:root {
+  /* --font-size-body: 16px;
+  --font-size-heading: 24px;
+  --font-size-subheading: 18px;
+  --font-size-small: 12px; */
+
+  --font-size-body: 18px; 
+  --font-size-heading: 32px; 
+  --font-size-subheading: 22px; 
+  --font-size-small: 14px; 
+}
+
+/* Font Sizes for Tablets */
+/* @media screen and (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    --font-size-body: 18px;
+    --font-size-heading: 28px;
+    --font-size-subheading: 20px;
+    --font-size-small: 14px;
+  }
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+  :root {
+    --font-size-body: 18px;
+    --font-size-heading: 32px;
+    --font-size-subheading: 22px;
+    --font-size-small: 14px;
+  }
+} */
+
+/* Font Sizes for Large Screens */
+@media screen and (min-width: 1440px) {
+  :root {
+    --font-size-body: 20px;
+    --font-size-heading: 36px;
+    --font-size-subheading: 24px;
+    --font-size-small: 16px;
+  }
 }
 

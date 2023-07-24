@@ -23,6 +23,7 @@
     font-weight: 900;
     font-size: 30px;
     padding: 20px 20px;
+    font-size: var(--font-size-subheading);
 }
 
 .auth_login_container {
@@ -32,40 +33,52 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .title {
     font-weight: bold;
-    font-size: 25px;
+    font-size: var( --font-size-subheading);
+    margin-bottom: 20px;
 }
 
 .sub_title {
     font-weight: 300;
     font-size: 15px;
     color: rgba(0, 0, 0, 0.725);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: var(--font-size-small);
 }
 
 .login_button {
     background-color: rgb(240, 240, 240);
     padding: 10px 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     font-weight: bold;
+    font-size: var(--font-size-small);
+    align-items: center;
+    cursor: pointer;
+}
+
+.login_button img{
+    width:  var(--font-size-small);
+    height:  var(--font-size-small);
+    margin: 0px 8px;
 }
 
 .terms {
+    font-weight: 300;
     font-size: 12px;
     margin-bottom: 10px;
+    font-size: var(--font-size-small);
 }
 
-@media (min-width: 856px) and (max-width: 1090px) {
-    
-  }
-
-@media (max-width: 600px) { 
+/* Mobile Devices (up to 767px) */
+@media screen and (max-width: 700px) {
+    /* Your styles for mobile go here */
     .auth_screen {
         display: flex;
         justify-content: center;
@@ -82,6 +95,23 @@
         padding: 40px;
         height: 50%;
     }
-    
-     
-}  
+  }
+  
+  /* Tablets (768px to 1023px) */
+  @media screen and (min-width: 700px) and (max-width: 1023px) {
+    /* Your styles for tablets go here */
+  }
+  
+  /* Desktops (1024px to 1439px) */
+  @media screen and (min-width: 1024px) and (max-width: 1439px) {
+    /* Your styles for desktops go here */
+  }
+  
+  /* Large Screens (1440px and above) */
+  @media screen and (min-width: 1440px) {
+    /* Your styles for large screens go here */
+  }
+  
+
+
+
