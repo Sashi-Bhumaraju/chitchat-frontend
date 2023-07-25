@@ -41,8 +41,8 @@ chichat-frontend/
 # Backend database Schema
 
 ```bash
-1. **User Schema:**
-  
+
+1. User Schema:  
 
 | Column Name    | Data Type        | Constraints       |
 |----------------|------------------|-------------------|
@@ -51,8 +51,9 @@ chichat-frontend/
 | photo_url      | STRING           | NOT NULL          |
 | email          | STRING           | UNIQUE, NOT NULL  |
 | created_at     | TIMESTAMP        | DEFAULT NOW()     |
-STRINGessage Schema:**
    
+
+2. Message Schema
 
 | Column Name   | Data Type       | Constraints           |
 |---------------|-----------------|-----------------------|  
@@ -63,8 +64,8 @@ STRINGessage Schema:**
 | timestamp     | TIMESTAMP       | DEFAULT NOW()         |
 | is_read       | BOOLEAN         | DEFAULT false         |
 
-3. **Contact Schema:**
-  
+
+3. Contact Schema:  
 
 | Column Name     | Data Type    | Constraints           |
 |-----------------|--------------|-----------------------|
