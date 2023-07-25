@@ -13,3 +13,4 @@ export const store = configureStore({
 })
 
 export * from "./thunks/authentication-thunks/Auth";
+export * from "./thunks/users-thunks/Users"

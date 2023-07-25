@@ -16,7 +16,7 @@ const SignOut = createAsyncThunk("user/signout",async ()=>{
 const SetUserData = async (user) => { 
        const u = JSON.stringify(user);
        console.log(u);
-       await setDoc(doc(db, "users",user.uid),JSON.parse(u));
+       await setDoc(doc(db, "users",user.user_id),JSON.parse(u));
 }
 
 export { SignIn,SignOut, SetUserData };

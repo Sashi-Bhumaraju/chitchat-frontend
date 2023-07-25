@@ -3,6 +3,8 @@ import { SetUserData, SignIn, SignOut } from "../thunks/authentication-thunks/Au
 import User from "../../models/User";
 import { LocalStorageGet, LocalStorageRemove, LocalStorageSet } from "../../util/LocalStorage";
 import  { useAuthState } from "react-firebase-hooks/auth";
+import { Timestamp } from "firebase/firestore";
+import { GetTimeStamp } from "../../util/GetTimeStamp";
 
 
 const UsersSlice = createSlice({  
@@ -14,17 +16,11 @@ const UsersSlice = createSlice({
     },   
     reducers : {},  
     extraReducers (builder) {  
-
+        
         builder.addCase(SignIn.fulfilled, (state,action) => {  
             const rawUserData = action.payload.user;  
-            const user = new  User(rawUserData.uid, rawUserData.displayName, rawUserData.email, rawUserData.photoURL );
+            const user = new  User(rawUserData.uid, rawUserData.displayName, rawUserData.email, rawUserData.photoURL, GetTimeStamp() );
             LocalStorageSet("chitchat.user",user); 
-            const temp = {
-               uid:  rawUserData.uid,
-                name : rawUserData.displayName,
-                  email :rawUserData.email,
-                   url :rawUserData.photoURL 
-            }
             state.data = user; 
             SetUserData(user);
         });  
