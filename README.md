@@ -37,6 +37,45 @@ chichat-frontend/
 |-- README.md
 ```
 
+
+# Schema
+
+```bash
+1. **User Schema:**
+  
+
+| Column Name    | Data Type        | Constraints       |
+|----------------|------------------|-------------------|
+| user_id        | INTEGER          | PRIMARY KEY       |
+| username       | VARCHAR(50)      | UNIQUE, NOT NULL  |
+| password_hash  | VARCHAR(100)     | NOT NULL          |
+| email          | VARCHAR(100)     | UNIQUE, NOT NULL  |
+| created_at     | TIMESTAMP        | DEFAULT NOW()     |
+
+2. **Message Schema:**
+   
+
+| Column Name   | Data Type       | Constraints           |
+|---------------|-----------------|-----------------------|
+| message_id    | INTEGER         | PRIMARY KEY           |
+| sender_id     | INTEGER         | FOREIGN KEY (user_id) |
+| recipient_id  | INTEGER         | FOREIGN KEY (user_id) |
+| content       | TEXT            | NOT NULL              |
+| timestamp     | TIMESTAMP       | DEFAULT NOW()         |
+| is_read       | BOOLEAN         | DEFAULT false         |
+
+3. **Contact Schema:**
+  
+
+| Column Name   | Data Type    | Constraints           |
+|---------------|--------------|-----------------------|
+| contact_id    | INTEGER      | PRIMARY KEY           |
+| user_id       | INTEGER      | FOREIGN KEY (user_id) |
+| contact_user_id | INTEGER    | FOREIGN KEY (user_id) |
+| created_at    | TIMESTAMP    | DEFAULT NOW()         |
+
+```
+
 **Key Features:**
 
 1. **Real-Time Messaging:** Experience instant and responsive messaging with real-time updates, making conversations feel fluid and natural.

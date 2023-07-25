@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { auth, provider } from "../../../firebase-config";
+import { auth, db, provider } from "../../../firebase-config";
 import { signInWithPopup, signOut } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore"; 
+
 
 const SignIn = createAsyncThunk("user/signin", async () => { 
        return await signInWithPopup(auth, provider) 
@@ -10,4 +12,11 @@ const SignOut = createAsyncThunk("user/signout",async ()=>{
        return await signOut(auth);
 }); 
 
-export { SignIn,SignOut };
+
+const SetUserData = async (user) => { 
+       const u = JSON.stringify(user);
+       console.log(u);
+       await setDoc(doc(db, "users",user.uid),JSON.parse(u));
+}
+
+export { SignIn,SignOut, SetUserData };

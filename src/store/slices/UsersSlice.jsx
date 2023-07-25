@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SignIn, SignOut } from "../thunks/authentication-thunks/Auth";
+import { SetUserData, SignIn, SignOut } from "../thunks/authentication-thunks/Auth";
 import User from "../../models/User";
 import { LocalStorageGet, LocalStorageRemove, LocalStorageSet } from "../../util/LocalStorage";
 import  { useAuthState } from "react-firebase-hooks/auth";
+
 
 const UsersSlice = createSlice({  
     name: "user",  
@@ -12,13 +13,20 @@ const UsersSlice = createSlice({
         error: null,    
     },   
     reducers : {},  
-    extraReducers(builder) {  
+    extraReducers (builder) {  
 
         builder.addCase(SignIn.fulfilled, (state,action) => {  
             const rawUserData = action.payload.user;  
             const user = new  User(rawUserData.uid, rawUserData.displayName, rawUserData.email, rawUserData.photoURL );
             LocalStorageSet("chitchat.user",user); 
-            state.data = user;   
+            const temp = {
+               uid:  rawUserData.uid,
+                name : rawUserData.displayName,
+                  email :rawUserData.email,
+                   url :rawUserData.photoURL 
+            }
+            state.data = user; 
+            SetUserData(user);
         });  
 
         builder.addCase(SignOut.fulfilled, (state,action) => {  
