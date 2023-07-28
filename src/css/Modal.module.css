@@ -1,0 +1,114 @@
+dialog {
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 0px;
+  height: 80%;
+  /* max-width: 550px; */
+  width: 550px;
+  outline: none;
+  min-width: 0px;
+  background-color:white;
+  position: relative;
+  border-radius: 5px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);    
+  /* background-color: rgba(196, 196, 196, 0.2); */       
+  padding: 0px;   
+  margin: 0px;  
+
+  margin: 0px;
+  padding: 0px;
+    min-width:100vw;
+    min-height: 100vh;
+    border-radius: 0px;
+}
+
+.modal_bar {
+  width: calc(100% - 40px);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* background-color: var(); */
+  border-bottom: 1px solid var(--territary);
+  height: 55px;
+  align-items: center;
+  background-color:  rgba(20, 23, 26,0.5);
+  backdrop-filter: blur(10px);
+}
+
+.modal_body {
+  padding-top: 65px;
+  width: calc(100% - 40px);
+  height: calc(100% - 85px);
+  overflow-y: auto;
+  margin: 0%;
+ padding: 20px;
+ padding-top: 55px;
+ /* background-color: gray; */
+}
+
+.close_modal_icon {
+  font-size: var(--sub-heading);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px 20px;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.modal_name {
+  font-size: var(--medium);
+  font-weight: bold;
+}
+
+@media (min-width: 856px) and (max-width: 1090px) {
+  dialog {
+      width: 480px;
+      min-width: 10px;
+   }
+}
+
+@media (max-width: 855px) { 
+
+  dialog {
+    margin: 0px;  
+    padding: 0px;  
+      min-width:100vw;  
+      width: 100vw;  
+      min-height: 100vh;  
+      height: 100vh;  
+      border-radius: 1px;  
+   }
+
+  .modal_body {
+    max-width: calc(450px - 20px);
+    min-width: 0px;
+    /* background-color: red; */
+  }
+
+  .modal_bar {
+    position: fixed;
+  }
+
+} 
+

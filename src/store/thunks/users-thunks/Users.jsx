@@ -1,8 +1,18 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, doc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, onSnapshot, or, query, where } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import { LocalStorageGet } from "../../../util/LocalStorage";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { getAllContacts } from "../../slices/UsersSlice";
+import { useDispatch } from "react-redux";
 
-const collectionRef = collection(db,"users");
+
+const GetContactsListOfUserQuery = () => {
+    const user = LocalStorageGet("chitchat.user");
+    const ContactsCollectionRef = collection(db,"contacts"); 
+    return  query( ContactsCollectionRef, or( where('user_1','==',user.user_id), where('user_2','==',user.user_id) ) );  
+}
+
 
 const GetUser = createAsyncThunk("user/get", async (user_id) => { 
     const docRef = doc(db,"users",user_id); 
@@ -14,15 +24,37 @@ const GetUser = createAsyncThunk("user/get", async (user_id) => {
     }
 }) 
 
-
 const GetAllUsers = createAsyncThunk("user/getAll", async () => { 
-    const usersSnapShot = await getDocs(collectionRef);
-    const allUsers = [];
+    const collectionRef = collection(db,"users"); 
+    const q = query( collectionRef, limit(100)); 
+    const usersSnapShot = await getDocs(q); 
+    const allUsers = []; 
     usersSnapShot.forEach((doc) => { allUsers.push(doc.data()) }); 
 }) 
+
+const GetAllContacts = createAsyncThunk("user/getAllContacts", async () => { 
+
+    const user = LocalStorageGet("chitchat.user");
+    const collectionRef = collection(db,"contacts"); 
+    const q = query( collectionRef, or( where('user_1','==',user.user_id), where('user_2','==',user.user_id) ) ); 
+   
+   const unsubscribe = onSnapshot(q, (snapshot) => {
+    const allUsers = [];
+      snapshot.forEach((doc) => { allUsers.push(doc.data()) });
+  });
+
+  // Clean up the listener when the component unmounts or the thunk is canceled.
+  return () => unsubscribe();
+   
+    // const usersSnapShot = await getDocs(q); 
+    // const allUsers = []; 
+    // usersSnapShot.forEach((doc) => { allUsers.push(doc.data()) }); 
+    // return allUsers 
+})
 
 const DeleteUser = createAsyncThunk("user/delete",async (user_id)=>{
     return await deleteDoc(doc(db, "users", user_id));
 })
 
-export { GetUser, GetAllUsers, DeleteUser };
+export { GetUser, GetAllUsers, DeleteUser, GetAllContacts, GetContactsListOfUserQuery };
+
