@@ -4,6 +4,7 @@ import { LocalStorageGet } from "../../../util/LocalStorage";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Message from "../../../models/Message";
 import { GetTimeStamp } from "../../../util/GetTimeStamp";
+import Contact from "../../../models/Contact";
 
 
 const GetChatListOfUserQuery = (frndId) => {
@@ -23,6 +24,9 @@ const SendMessageToUser = createAsyncThunk("send/message",async (rawMessageObjec
    newMessage.timestamp = GetTimeStamp();
    const JsonMessageObject = JSON.parse(JSON.stringify(newMessage));
    await addDoc(messagesCollectionRef,JsonMessageObject);
+   
+   const newContact = new Contact();
+   
 })
 
 export { GetChatListOfUserQuery, SendMessageToUser }

@@ -12,8 +12,9 @@ function SendMessage(props) {
   const submitMessage =  (event) => {
     event.preventDefault();
     const rawMessageObject = { content : content, friend_id : props.friend.user_id, friend_username : props.friend.username, friend_photo_url: props.friend.photo_url }
-     runSendMessageToUser(rawMessageObject);
+    runSendMessageToUser(rawMessageObject);
     resetContentChange()
+    // props.scrollBottom()
     console.log(rawMessageObject)
   }
 

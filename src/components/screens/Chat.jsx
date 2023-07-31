@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from '../../css/Chat.module.css';
 import data from './data';
 import ChatListItem from '../widgets/ChatListItem';
@@ -19,15 +19,19 @@ function Chat() {
   const friend = useLocation().state;
   const [messages] = useCollectionData(GetChatListOfUserQuery(chatId));
   const messageswidget = messages && messages.map((message)=><ChatListItem key={nanoid()} message = {message}/>)
+  const scrollToBottomPointRef = useRef();
+  const scrollToBottom = () => scrollToBottomPointRef.current?.scrollIntoView()
+  useEffect(()=>scrollToBottom(),[messages])
 
   return (
     <section className={styles.chat}> 
         <AppBar leftImageUrl={friend.photo_url} name={friend.username} /> 
 
         { !messages && "loadindg" } 
-        { messages && messageswidget }  
+        { messages && messageswidget }    
         {/* {JSON.stringify(friend)} */} 
-        <SendMessage friend = {friend} />  
+        <div ref={scrollToBottomPointRef} />
+        <SendMessage friend = {friend} scrollBottom = {scrollToBottom} />  
     </section> 
   )
 }
