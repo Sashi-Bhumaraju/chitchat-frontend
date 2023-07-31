@@ -2,6 +2,8 @@ import React from 'react';
 import UseThunk from '../hooks/UseThunk';
 import { SignOut } from '../store';
 import { Outlet } from 'react-router-dom';
+import styles from '../css/Home.module.css'
+import ContactList from './screens/ContactList';
 
 
 function Home() {
@@ -11,11 +13,9 @@ function Home() {
     runSignOutMethod();
   }
   return (
-    <section>
-        {/* <div>Home</div> */}
-        <button onClick={Logout}>logout</button>
-        <h1> pichhi puuku venky  </h1>
-        {/* <Outlet></Outlet> */}
+    <section className={styles.home}>
+        <div className={styles.home_static_widget}> <ContactList/> </div>
+        <div className={styles.home_dynamic_widget}> <Outlet></Outlet> </div>
     </section>
   )
 }

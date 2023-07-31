@@ -1,0 +1,96 @@
+.contact_list_skeleton { 
+    width: 300px; 
+    height: 100%; 
+    background-color: #121212; 
+    padding: 0px 10px; 
+    overflow-y: auto; 
+    position: relative; 
+     
+}
+
+.contact_list_skeleton_item { 
+    width:  calc(100% - 20px); 
+    min-height: 50px; 
+    /* background-color: #232323;  */
+    padding: 5px 10px; 
+    display: flex; 
+    /* justify-content: center; */
+    align-items: center; 
+    /* flex-direction: row; */
+    border-radius: 5px; 
+    cursor: progress; 
+    animation: fadeInOut 2s linear infinite; 
+    margin-bottom: 3px; 
+} 
+
+
+.contact_list_skeleton_item_image  {
+    /* background-color: red; */
+    display: flex;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.487);
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.contact_list_skeleton_item_container {
+   /* background-color: green; */
+   display: flex;
+   flex-direction: column;
+   width: calc(100% - 65px);
+   padding: 0px 10px;
+   /* height: 50px; */
+
+}
+
+.contact_list_skeleton_item_heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* background-color: red; */
+    height:18px;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.contact_list_skeleton_item_heading_name {
+    font-weight: bold;
+    font-size: var(--font-size-small);
+    background-color: rgba(0, 0, 0, 0.655);
+    height: 14px;
+    width: 50%;
+    border-radius: 2px;
+}
+
+.contact_list_skeleton_item_heading_content {
+    font-weight: bold;
+    font-size: var(--font-size-small);
+    background-color: rgba(0, 0, 0, 0.175);
+    height: 14px;
+    width: 20%;
+    border-radius: 2px;
+}
+
+.contact_list_skeleton_item_content {
+    font-size: 12px;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.363);
+    border-radius: 2px;
+}
+
+
+@keyframes fadeInOut {
+    0% { opacity: 0; } 
+    50% { opacity: 1; } 
+    100% { opacity: 0; } 
+  }

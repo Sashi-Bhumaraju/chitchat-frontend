@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, doc, getDoc, getDocs, onSnapshot, or, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, onSnapshot, or, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import { LocalStorageGet } from "../../../util/LocalStorage";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 const GetContactsListOfUserQuery = () => {
     const user = LocalStorageGet("chitchat.user");
     const ContactsCollectionRef = collection(db,"contacts"); 
-    return  query( ContactsCollectionRef, or( where('user_1','==',user.user_id), where('user_2','==',user.user_id) ) );  
+    return  query( ContactsCollectionRef, orderBy("timestamp","desc"), or( where('user_id_1','==',user.user_id), where('user_id_2','==',user.user_id) ) );  
 }
 
 

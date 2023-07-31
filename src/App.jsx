@@ -6,6 +6,7 @@ import { GetTimeStamp } from './util/GetTimeStamp';
 import UserListItem from './components/widgets/UserListItem';
 import UserList from './components/screens/UserList';
 import ContactList from './components/screens/ContactList';
+import Chat from './components/screens/Chat';
 // import GetTimeStamp from './util/GetTimeStamp';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           {/* <UserListItem/> */}
           {/* <UserList/> */}
           {/* <ContactList/> */}
+          {/* <Chat/> */}
       </section>
     
     </>

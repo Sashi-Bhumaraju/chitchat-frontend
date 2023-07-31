@@ -1,0 +1,17 @@
+.home { 
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgb(189, 210, 234);
+    display: flex;
+    flex-direction: row;
+} 
+
+.home_static_widget {
+    width: 350px;
+    height: 100%;
+}
+
+.home_dynamic_widget {
+    width: calc(100% - 350px);
+    height: 100%;
+}

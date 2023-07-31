@@ -1,0 +1,59 @@
+.send_message {
+    width: 100%;
+    height: 50px;
+    background-color: var(--secondary-color);
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: white;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+  
+}
+
+.send_message_input_box {
+    width: calc(100% - 45px);
+    height: 100%;
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 100%; 
+    outline: none; 
+    border: none;
+    margin: 0px; 
+    padding: 10px 15px; 
+    /* line-height: 20px; */
+    /* height: 40px; */
+    font-size: var(--font-size-small); 
+    font-weight: bold; 
+    background-color: transparent;
+    color: white;
+    /* background-color: red; */
+
+}
+
+
+.send_message_submit {
+    /* background-color: #3797f0; */
+    font-weight: 900;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.send_message_submit:hover {
+    background-color: var(--territary-color);
+}
