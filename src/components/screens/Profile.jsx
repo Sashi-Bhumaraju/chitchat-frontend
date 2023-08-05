@@ -11,26 +11,21 @@ function Profile() {
   var {user_id} = useParams();
   const [runGetUser, userData, isLoading, error] = UseThunk(GetUser)
   const currentUser = useSelector((state)=>state.user.data)
-  const fetchedUser = useSelector((state)=>{ return state.user.fetchedUsers.find(user => user && user.user_id === user_id) })
-  useEffect(() => {
-    console.log("ioio")
-    if (!user_id) {
-      navigate(currentUser.user_id, { replace: true });
-    } else if (!fetchedUser) {
-      runGetUser(user_id);
-    }
-  }, [user_id, fetchedUser]); 
+  // const fetchedUser = useSelector((state)=>{ return state.user.fetchedUsers.find(user => user && user.user_id === user_id) })
+  useEffect(() => {  
+    runGetUser(user_id);  
+  }, [user_id]);  
 
-  if(!fetchedUser) return "loading"+user_id 
+  if(isLoading) return "loading"
   return (
      <section className={styles.profile_screen}>
         {/* {JSON.stringify(fetchedUser)} */}
         <div className={styles.profile_screen_header} >
-            <img src={fetchedUser.photo_url} alt='profile photo'></img>
-            <div className={styles .profile_screen_header_username }>{fetchedUser.username}</div>
+            <img src={userData.photo_url} alt='profile photo'></img>
+            <div className={styles.profile_screen_header_username }>{userData.username}</div>
         </div>
         <div className={styles.profile_screen_body}>
-          <div className={styles.profile_screen_body_item}>{fetchedUser.email}</div>
+          <div className={styles.profile_screen_body_item}>{userData.email}</div>
         </div>
      </section>
   )

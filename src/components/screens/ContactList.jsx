@@ -7,18 +7,32 @@ import AppBar from '../widgets/AppBar';
 import { GetContactListUser } from '../../util/GetContactListUser';
 import { nanoid } from 'nanoid';
 import ContactListSkeleton from '../skeletons/ContactListSkeleton';
+import UseCollectionData from '../../hooks/UseCollectionData';
+import { useSelector } from 'react-redux';
+import { BiMessageSquareAdd } from 'react-icons/bi'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function ContactList() {
   
-  const [getContacts, isLoading, error] =  useCollectionData(GetContactsListOfUserQuery(), { idField: 'id' });
-  const contactListUsers  = getContacts && getContacts.map((data)=>{ const contact = GetContactListUser(data); console.log(contact); return <ContactListItem key = {nanoid()}  contact = {contact}/> });
-
+  // const [getContacts, isLoading, error] =  useCollectionData(GetContactsListOfUserQuery(), { idField: 'id' });
+  const [getContacts, isLoading, error] = UseCollectionData(GetContactsListOfUserQuery());
+  const contactListUsers  = getContacts && getContacts.map((data)=>{ const contact = GetContactListUser(data);  return <ContactListItem key = {nanoid()}  contact = {contact}/> });
+  const user = useSelector((state)=>state.user.data)   
+  const navigate = useNavigate();   
+  const currentLoaction =   useLocation().pathname
+  const displayProfile = () => { 
+        navigate(currentLoaction +"/"+ user.user_id)   
+  }  
+  const searchUser = () => { 
+        navigate("search_user")   
+  }
   return (
-    <section className={styles.contact_list}>
-        <AppBar name={"ChitChat"}/>
-         {!getContacts && <ContactListSkeleton/>}
-         {getContacts && contactListUsers}
-    </section>
+    <section className={styles.contact_list}>  
+        <AppBar name={"ChitChat"} rightImageUrl={user.photo_url} click={displayProfile}/>     
+         {!getContacts && <ContactListSkeleton/>}      
+         {getContacts && contactListUsers}    
+         <div className={styles.add_friend} onClick={searchUser}>  <BiMessageSquareAdd/> </div>    
+    </section>   
   )
   
 }

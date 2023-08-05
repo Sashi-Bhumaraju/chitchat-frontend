@@ -11,11 +11,12 @@ function UserListItem(props) {
         <div className={styles.user_list_item_container}>
             <div className={styles.user_list_item_heading}>
                 <div className={styles.user_list_item_heading_name}>sasi Bhumaraju</div>
-                <div className={styles.user_list_item_heading_time}>message</div>
+                 {/* <div className={styles.user_list_item_heading_time}>message</div> */}
             </div>
             <div className={styles.user_list_item_content}>you are good right?</div>
             {/* <div className={styles.user_list_item_content}>you are good right?</div> */}
         </div>
+        {/* <div className={styles.make_chat}>chat</div> */}
     </div>
   )
 }

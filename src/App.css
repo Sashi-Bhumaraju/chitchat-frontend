@@ -2,6 +2,7 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    /* background-color: rgb(244, 244, 244); */
 }
 
 /* Font Sizes for Mobile Devices */
@@ -16,6 +17,7 @@
   --territary-color: #232323; /* Yellow */
   --primary-font-color: white; /* Green */
   --secondary-font-color:  #cccccc;
+  --accet-color: #9b1fe8
   
 }
 

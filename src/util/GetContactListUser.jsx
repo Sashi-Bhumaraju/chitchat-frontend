@@ -1,4 +1,6 @@
 import DateTimeFormatter from "./DateTimeFormatter";
+import FormatTimestamp from "./FormatTimestamp";
+import { GetTimeFromTimestamp } from "./GetTimeFromTimestamp";
 import { LocalStorageGet } from "./LocalStorage";
 
 const GetContactListUser = (data) => {
@@ -8,11 +10,12 @@ const GetContactListUser = (data) => {
     const username = "username_" + sufixCharacter;
     const photo_url = "photo_url_" + sufixCharacter;
     const contact = {
-      user_id: data[user_id],
-      username: data[username],
-      photo_url: data[photo_url],
-      content: data.recent_content,
-      timestamp: DateTimeFormatter(data.timestamp)
+      user_id: data[user_id], 
+      username: data[username], 
+      photo_url: data[photo_url], 
+      content: data.recent_content, 
+      timestamp: FormatTimestamp(data.timestamp), 
+      id : data.id
     };
     return contact;
   };

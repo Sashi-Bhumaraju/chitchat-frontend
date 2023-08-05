@@ -1,7 +1,8 @@
 .user_list_item {
     width:  calc(100% - 20px);
     min-height: 50px;
-    background-color: aliceblue;
+    /* background-color: aliceblue;
+    background-color: #232323; */
     padding: 5px 10px;
     display: flex;
     /* justify-content: center; */
@@ -9,17 +10,18 @@
     /* flex-direction: row; */
     border-radius: 5px;
     cursor: pointer;
+    color: white;
+    margin-bottom: 3px;
 }
 
 .user_list_item:hover {
-    background-color: rgb(226, 234, 243);
+    background-color: var(--territary-color);
 }
 .user_list_item_image  {
     /* background-color: red; */
     display: flex;
 }
 .user_list_item_image img {
-
     width: 42px;
     height: 42px;
     object-fit: cover;
@@ -35,6 +37,14 @@
    flex-direction: column;
    width: calc(100% - 65px);
    padding: 0px 10px;
+}
+
+.make_chat {
+    background-color: var(--secondary-color);
+    background-color: var(--accet-color);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 900;
 }
 
 .user_list_item_heading {
@@ -58,4 +68,8 @@
 
 .user_list_item_content {
     font-size: 12px;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
 }

@@ -13,6 +13,7 @@
   align-items: center;
   flex-direction: column;
   font-weight: bold;
+  
 }
 
 .app_name {
@@ -25,6 +26,6 @@
 .app_name_caption {
     font-size: var(--font-size-small);
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-weight: 100;
 }

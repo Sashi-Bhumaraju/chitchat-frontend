@@ -9,7 +9,7 @@ dialog {
   width: 550px;
   outline: none;
   min-width: 0px;
-  background-color:white;
+  background-color: var(--primary-color);
   position: relative;
   border-radius: 5px;
   padding: 0px;
@@ -19,12 +19,14 @@ dialog {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  outline: 1px solid var(--territary-color);
 }
 
   
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.7);    
+  background-color: var(--secondary-color);    
   /* background-color: rgba(196, 196, 196, 0.2); */       
   padding: 0px;   
   margin: 0px;  
@@ -51,17 +53,19 @@ dialog::backdrop {
   align-items: center;
   background-color:  rgba(20, 23, 26,0.5);
   backdrop-filter: blur(10px);
+  background-color: var(--secondary-color);
 }
 
 .modal_body {
   padding-top: 65px;
-  width: calc(100% - 40px);
-  height: calc(100% - 85px);
+  width: calc(100% - 0px);
+  height: calc(100% - 55px);
   overflow-y: auto;
   margin: 0%;
- padding: 20px;
+ padding: 0px;
  padding-top: 55px;
  /* background-color: gray; */
+
 }
 
 .close_modal_icon {
@@ -74,6 +78,8 @@ dialog::backdrop {
   display: flex;
   height: 100%;
   align-items: center;
+  /* background-color: red; */
+  color: white;
 }
 
 .modal_name {

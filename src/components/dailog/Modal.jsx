@@ -32,7 +32,7 @@ function Modal (props) {
   return (
         <dialog id='modal-data'> 
             <div className={styles.modal_bar }>
-                <div className={styles  .close_modal_icon } onClick={closeModal}><IoMdArrowRoundBack/></div>
+                <div className={styles.close_modal_icon } onClick={closeModal}><IoMdArrowRoundBack/></div>
                 <div className={styles.modal_name} >{props.componentName}</div>
             </div>
             <div className={styles.modal_body}>  {props.children} </div>

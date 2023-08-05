@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../../css/NoChatWindow.module.css';
+import { Outlet } from 'react-router-dom';
 
 function NoChatWindow() {
   return (
@@ -8,6 +9,7 @@ function NoChatWindow() {
             <div className={styles.app_name}> ChitChat </div>
             <div className={styles.app_name_caption}> Melodies of Friendship: Embracing the Whispers  of Yaari ❤ ChitChat </div>
         </div>
+        <Outlet/>
     </section>
   )
 }

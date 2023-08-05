@@ -1,20 +1,20 @@
-.app_bar {
-    width: 100%; 
-    height: 55px; 
-    background-color: rgb(240, 248, 255); 
-    background-color: #121212;
-   color: white;
+.app_bar { 
+    width: 100%;  
+    height: 55px;  
+    background-color: rgb(240, 248, 255);  
+    background-color: #121212;  
+    color: white;  
     /* filter: blur(10px); */
-    backdrop-filter: blur(10px); 
-    position: sticky; 
+    backdrop-filter: blur(10px);  
+    position: sticky;  
     top: 0px; /* Adjust the top position as per your requirement */
-    left: 0px;  
-    z-index: 100;  
-    display: flex; 
-    justify-content: start; 
-    align-items: center; 
-    font-size: var(--font-size-body); 
-    font-weight: bold; 
+    left: 0px;   
+    z-index: 100;   
+    display: flex;  
+    justify-content: space-between;  
+    align-items: center;   
+    font-size: var(--font-size-body);  
+    font-weight: bold;  
 } 
  
 .app_bar_name { 
@@ -29,5 +29,31 @@
     background-color: black; 
     /* margin: 0px 10px;  */
     margin-left: 15px;
-
+    cursor: pointer;
 } 
+
+.imageright { 
+    border-radius: 50%; 
+    height: 35px; 
+    width: 35px; 
+    background-color: black; 
+    /* margin: 0px 10px;  */
+    margin-right: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+} 
+
+.start {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.end {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}

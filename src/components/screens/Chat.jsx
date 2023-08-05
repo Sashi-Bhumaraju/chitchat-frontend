@@ -1,37 +1,44 @@
 import React, { useRef } from 'react';
 import styles from '../../css/Chat.module.css';
-import data from './data';
 import ChatListItem from '../widgets/ChatListItem';
 import AppBar from '../widgets/AppBar';
-import { getDocs } from 'firebase/firestore';
 import { GetChatListOfUserQuery } from '../../store/thunks/chat-thunks/Chat';
 import { useEffect,useState } from 'react';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { useParams, useLocation  } from 'react-router-dom';
+import { useParams, useLocation, Outlet, useNavigate  } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import SendMessage from '../widgets/SendMessage';
+import UseCollectionData from '../../hooks/UseCollectionData';
+import NoChatWindow from '../widgets/NoChatWindow';
+import { useSelector } from 'react-redux';
 
 
 function Chat() {
 
-  
   const { chatId } = useParams();
-  const friend = useLocation().state;
-  const [messages] = useCollectionData(GetChatListOfUserQuery(chatId));
+  const [friend,setFriend] = useState(  useLocation().state);
+  const [messages] = UseCollectionData(GetChatListOfUserQuery(chatId));
+  useEffect(()=>{  scrollToBottom() },[messages])
   const messageswidget = messages && messages.map((message)=><ChatListItem key={nanoid()} message = {message}/>)
   const scrollToBottomPointRef = useRef();
   const scrollToBottom = () => scrollToBottomPointRef.current?.scrollIntoView()
-  useEffect(()=>scrollToBottom(),[messages])
+  const navigate = useNavigate()
+  const user = useSelector((state)=>state.user.data)
+
+  const displayProfile = () => { 
+    navigate(friend.user_id) 
+  } 
 
   return (
-    <section className={styles.chat}> 
-        <AppBar leftImageUrl={friend.photo_url} name={friend.username} /> 
-
+    <section className={styles.chat}>     
+        <AppBar leftImageUrl={friend && friend.photo_url} name={friend && friend.username} click={displayProfile} />  
+        <div className={styles.empty_chat}>     
+            <NoChatWindow/>
+        </div>
         { !messages && "loadindg" } 
         { messages && messageswidget }    
-        {/* {JSON.stringify(friend)} */} 
         <div ref={scrollToBottomPointRef} />
         <SendMessage friend = {friend} scrollBottom = {scrollToBottom} />  
+        <Outlet/>
     </section> 
   )
 }

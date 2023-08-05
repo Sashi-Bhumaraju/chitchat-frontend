@@ -5,7 +5,7 @@ import { LocalStorageGet, LocalStorageRemove, LocalStorageSet } from "../../util
 import  { useAuthState } from "react-firebase-hooks/auth";
 import { Timestamp } from "firebase/firestore";
 import { GetTimeStamp } from "../../util/GetTimeStamp";
-import { GetAllContacts, GetUser } from "../thunks/users-thunks/Users";
+import { GetAllContacts, GetAllSearchedUsers, GetUser } from "../thunks/users-thunks/Users";
 
 
 const UsersSlice = createSlice({   
@@ -13,7 +13,8 @@ const UsersSlice = createSlice({
     initialState : {   
         data: LocalStorageGet("chitchat.user"),   
         fetchedUsers : [],  
-        contactedUsers : []
+        contactedUsers : [],
+        searchedUsers: []
     },   
     reducers : {
         getAllContacts: (state, action) => {
@@ -42,7 +43,13 @@ const UsersSlice = createSlice({
             const contactedUsersList = action.payload;         
             console.log(contactedUsersList)        
             state.contactedUsers=contactedUsersList;        
-        });  
+        }); 
+        
+        builder.addCase(GetAllSearchedUsers.fulfilled, (state,action) => {      
+            const searchedUsersList = action.payload;         
+            console.log(searchedUsersList)        
+            state.searchedUsers=searchedUsersList;        
+        }); 
 
         builder.addCase(SignOut.fulfilled, (state,action) => {  
             state.data = null;

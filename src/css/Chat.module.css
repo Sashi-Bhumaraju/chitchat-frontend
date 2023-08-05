@@ -8,6 +8,14 @@
     background-blend-mode: overlay; 
     overflow-y: auto;
     position: relative;
+    color: white;
     /* transform: scaleY(-1) */
+}
+
+.empty_chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc( 100vh - 105px);
 }
 

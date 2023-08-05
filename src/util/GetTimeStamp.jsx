@@ -13,6 +13,8 @@ function  GetTimeStamp  () {
     timeZoneName: 'short',
     };
     const formattedTimestamp = timestamp.toLocaleString('en-US', options);
+
+    
     return formattedTimestamp;
 
 }

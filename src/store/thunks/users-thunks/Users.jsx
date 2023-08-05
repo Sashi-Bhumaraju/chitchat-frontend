@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, doc, getDoc, getDocs, onSnapshot, or, orderBy, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, onSnapshot, or, orderBy, query, startAfter, startAt, where } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import { LocalStorageGet } from "../../../util/LocalStorage";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -32,6 +32,14 @@ const GetAllUsers = createAsyncThunk("user/getAll", async () => {
     usersSnapShot.forEach((doc) => { allUsers.push(doc.data()) }); 
 }) 
 
+const GetAllSearchedUsers = createAsyncThunk("user/getAll/search", async (searchKey) => { 
+    const collectionRef = collection(db,"users"); 
+    const q = query( collectionRef, startAt(searchKey.trim()), limit(100)); 
+    const usersSnapShot = await getDocs(q); 
+    const allUsers = []; 
+    usersSnapShot.forEach((doc) => { allUsers.push(doc.data()) }); 
+}) 
+
 const GetAllContacts = createAsyncThunk("user/getAllContacts", async () => { 
 
     const user = LocalStorageGet("chitchat.user");
@@ -56,5 +64,5 @@ const DeleteUser = createAsyncThunk("user/delete",async (user_id)=>{
     return await deleteDoc(doc(db, "users", user_id));
 })
 
-export { GetUser, GetAllUsers, DeleteUser, GetAllContacts, GetContactsListOfUserQuery };
+export { GetUser, GetAllUsers, GetAllSearchedUsers, DeleteUser, GetAllContacts, GetContactsListOfUserQuery };
 

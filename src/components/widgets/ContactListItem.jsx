@@ -6,9 +6,11 @@ function ContactListItem(props) {
   const navigate = useNavigate();
   const goToChattingPage= ()  => {
       navigate(props.contact.user_id,{ state: props.contact })
+      console.log(props.contact)
   }
   return (
     <div className={styles.contact_list_item} onClick={goToChattingPage}>
+
       <div className={styles.contact_list_item_image}>
         <img src={props.contact.photo_url} alt="User Profile"></img>
       </div>
