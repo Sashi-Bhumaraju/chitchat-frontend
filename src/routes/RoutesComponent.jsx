@@ -37,12 +37,9 @@ function RoutesComponent ({ component: Component, ...rest }) {
                         {/* <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/> */}
 
                         <Route path=":chatId" element={<Chat/>}> 
-               
                                 <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>
                                 <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
-                           
                         </Route>
-
                     </Route>
                     <Route path='*' element={<Navigate to="/auth"/> }/>
               </Routes>
@@ -50,7 +47,7 @@ function RoutesComponent ({ component: Component, ...rest }) {
 :
             <Routes>
                 <Route path="/" element={ <Navigate to="/auth"/> } />   
-                <Route path="/auth" element = { user? <Navigate to="/home"/> : <Auth/> } /> 
+                <Route path="/auth" element = { user? <Navigate to="/home/s"/> : <Auth/> } /> 
                 <Route path="/home/s" element = { user? <Home/> : <Navigate to="/auth"/>} >  
                             <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
                             <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>

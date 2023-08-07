@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from '../../css/UserListItem.module.css'
 import { useNavigate } from 'react-router-dom';
+import UseIsMobile from '../../hooks/UseIsMobile';
 
 function UserListItem(props) {
 
   const navigate = useNavigate()
+  const isMobile = UseIsMobile();
   const goToChattingPage= ()  => {
+    isMobile?   navigate( "/"+props.user.user_id,{ state: props.user, replace: true }) :
     navigate( "/home/"+props.user.user_id,{ state: props.user })
-    console.log(props.user)
   } 
   return (
     <div className={styles.user_list_item} onClick={goToChattingPage}>
