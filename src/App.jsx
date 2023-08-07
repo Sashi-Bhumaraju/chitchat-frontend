@@ -6,8 +6,6 @@ import SearchBar from './hooks/UseSearchBar';
 import RoutesComponent from './routes/RoutesComponent';
 
 function App() {
-  ContactsBridge();
-  const [SearchBar, value, reset] = UseSearchBar('search user');
   return (
       <section className='app'>
           <RoutesComponent/>

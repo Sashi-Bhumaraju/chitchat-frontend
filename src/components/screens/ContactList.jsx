@@ -15,6 +15,7 @@ import ContactsBridge from '../../bridge/ContactsBridge';
 
 function ContactList() {
   
+  ContactsBridge();
   const getContacts = useSelector((state)=>state.contact.data); 
   const contactListUsers  = getContacts && getContacts.map((data)=>{ const contact = GetContactListUser(data);  return <ContactListItem key = {nanoid()}  contact = {contact}/> });
   const user = useSelector((state)=>state.user.data)     
