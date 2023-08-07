@@ -21,17 +21,18 @@ function RoutesComponent ({ component: Component, ...rest }) {
                     <Route path="/auth" element = { user? <Navigate to="/home"/> : <Auth/> } />
                     <Route path="/home" element = { user? <Home/> : <Navigate to="/auth"/>} > 
 
-                        {/* <Route index element={<Navigate to="start" />} />
+                        <Route index element={<Navigate to="start" />} />
 
                         <Route path='start' element={ <NoChatWindow/> } >  
                             <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
                             <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>
-                        </Route> */}
-                        <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
+                        </Route>
+                        {/* <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/> */}
+
                         <Route path=":chatId" element={<Chat/>}> 
                
                                 <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>
-                                {/* <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/> */}
+                                <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
                            
                         </Route>
 

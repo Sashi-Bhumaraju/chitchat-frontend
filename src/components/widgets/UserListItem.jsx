@@ -1,19 +1,26 @@
 import React from 'react';
 import styles from '../../css/UserListItem.module.css'
+import { useNavigate } from 'react-router-dom';
 
 function UserListItem(props) {
+
+  const navigate = useNavigate()
+  const goToChattingPage= ()  => {
+    navigate( "/home/"+props.user.user_id,{ state: props.user })
+    console.log(props.user)
+  } 
   return (
-    <div className={styles.user_list_item}>
+    <div className={styles.user_list_item} onClick={goToChattingPage}>
         {/* UserListItem */}
         <div className={styles.user_list_item_image}>
-            <img src='https://lh3.googleusercontent.com/a/AAcHTtd5KMYf1_TBGNXt1VnlGpMI3nMRrN0Ihsd5BZbCKmM=s96-c'></img>
+            <img src={props.user.photo_url}></img>
         </div>
         <div className={styles.user_list_item_container}>
             <div className={styles.user_list_item_heading}>
-                <div className={styles.user_list_item_heading_name}>sasi Bhumaraju</div>
+                <div className={styles.user_list_item_heading_name}>{props.user.username}</div>
                  {/* <div className={styles.user_list_item_heading_time}>message</div> */}
             </div>
-            <div className={styles.user_list_item_content}>you are good right?</div>
+            <div className={styles.user_list_item_content}>{props.user.email}</div>
             {/* <div className={styles.user_list_item_content}>you are good right?</div> */}
         </div>
         {/* <div className={styles.make_chat}>chat</div> */}

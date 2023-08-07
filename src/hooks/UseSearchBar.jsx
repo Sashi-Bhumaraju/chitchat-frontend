@@ -9,16 +9,19 @@ function UseSearchBar(placeHolder) {
   const reset = () => {
     setValue('');
   }
- 
-  function SearchBar() {
-    return (
-      <div className={styles.search_bar} >
-         <input placeholder={placeHolder} ></input>
-      </div>
-    )
-  }
 
-  return [SearchBar,value,reset];
+  const handleChange = (e) => {
+    // console.log(e.target.value)
+    setValue(e.target.value);
+  }
+ 
+   
+  const SearchBar = <div className={styles.search_bar} >
+         <input  value={value} onChange={handleChange} placeholder={placeHolder} ></input>
+      </div>
+    
+
+  return [SearchBar,value];
 }
 
 export default UseSearchBar;

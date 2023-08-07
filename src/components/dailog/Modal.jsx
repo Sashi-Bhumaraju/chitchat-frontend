@@ -6,17 +6,16 @@ import styles from '../../css/Modal.module.css';
 import Profile from '../screens/Profile';
 
 
-function Modal (props) {      
-    const naviagte = useNavigate()
-    // const { user_id } = useParams();
-    // const [ modalComponentName, setModalComponentName] = useState(null);
-    // const [ modalComponent, setModalComponent] = useState(null);
+function Modal (props) {       
+    const naviagte = useNavigate()  
+    // const { user_id } = useParams(); 
+    // const [ modalComponentName, setModalComponentName] = useState(null); 
+    // const [ modalComponent, setModalComponent] = useState(null); 
 
     const showModal = () => {        
         const modal = document.getElementById("modal-data") 
         modal.close();
         modal.showModal();
-
     } 
 
     const closeModal = () => {           

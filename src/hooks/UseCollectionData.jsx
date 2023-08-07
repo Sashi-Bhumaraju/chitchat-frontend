@@ -3,6 +3,7 @@ import { onSnapshot } from "firebase/firestore";
 
 function UseCollectionData(queryStatement) {
 
+    // console.log("sasiiiiiiiiiiiiiiiiii") 
     const [state,setState] = useState(null);
     const [isLoading,setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -10,6 +11,7 @@ function UseCollectionData(queryStatement) {
     useEffect(()=>{
         setIsLoading(true); 
         setError(null); 
+        // console.log( JSON.stringify( queryStatement))    
         const unsubscribe = onSnapshot(queryStatement, (snapshot) => {
             var listOfResponseRows = snapshot.docs.map((doc) => { 
                 return  { id: doc.id, ...doc.data() }

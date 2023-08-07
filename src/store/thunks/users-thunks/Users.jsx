@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { collection, doc, getDoc, getDocs, onSnapshot, or, orderBy, query, startAfter, startAt, where } from "firebase/firestore";
+import { and, collection, doc, getDoc, getDocs, limit, onSnapshot, or, orderBy, query, startAfter, startAt, where } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import { LocalStorageGet } from "../../../util/LocalStorage";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -12,6 +12,8 @@ const GetContactsListOfUserQuery = () => {
     const ContactsCollectionRef = collection(db,"contacts"); 
     return  query( ContactsCollectionRef, orderBy("timestamp","desc"), or( where('user_id_1','==',user.user_id), where('user_id_2','==',user.user_id) ) );  
 }
+
+
 
 
 const GetUser = createAsyncThunk("user/get", async (user_id) => { 
@@ -33,11 +35,15 @@ const GetAllUsers = createAsyncThunk("user/getAll", async () => {
 }) 
 
 const GetAllSearchedUsers = createAsyncThunk("user/getAll/search", async (searchKey) => { 
+    searchKey = searchKey.trim()
     const collectionRef = collection(db,"users"); 
-    const q = query( collectionRef, startAt(searchKey.trim()), limit(100)); 
+    const q = query( collectionRef,   and( where('email', '>=', searchKey), where('email', '<=', searchKey+ '\uf8ff')), limit(100)); 
     const usersSnapShot = await getDocs(q); 
+    // return usersSnapShot
     const allUsers = []; 
     usersSnapShot.forEach((doc) => { allUsers.push(doc.data()) }); 
+    return allUsers
+    console.log(allUsers)
 }) 
 
 const GetAllContacts = createAsyncThunk("user/getAllContacts", async () => { 

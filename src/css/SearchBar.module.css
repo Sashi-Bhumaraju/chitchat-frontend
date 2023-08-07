@@ -13,7 +13,7 @@
 .search_bar input {  
     border-bottom: solid 2px var(--accet-color);  
     outline:  solid 1px var(--territary-color);  
-    padding: 5px 15px;  
+    padding: 6px 15px;  
     margin: 0px;  
     height: 15px;  
     background-color: var(--primary-color); 

@@ -17,12 +17,12 @@ const UsersSlice = createSlice({
         searchedUsers: []
     },   
     reducers : {
-        getAllContacts: (state, action) => {
-            const contactedUsersList = action.payload;         
-            console.log(contactedUsersList)        
-            state.contactedUsers=contactedUsersList;        
-        }
-    },  
+        getAllContacts: (state, action) => {        
+            const contactedUsersList = action.payload;             
+            console.log(contactedUsersList)             
+            state.contactedUsers=contactedUsersList;            
+        }     
+    },    
     extraReducers (builder) {  
 
         builder.addCase(SignIn.fulfilled, (state,action) => {  
