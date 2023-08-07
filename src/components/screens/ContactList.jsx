@@ -33,7 +33,7 @@ function ContactList() {
   }      
 
   const searchUser = () => {    
-      if(isMobile)  navigate("/home/search_user") 
+      if(isMobile)  navigate("/home/s/search_user") 
       else   navigate(currentLoaction +"/search_user")      
   }    
 

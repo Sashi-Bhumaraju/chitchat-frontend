@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import styles from '../../css/ContactListItem.module.css'
 import { useNavigate } from 'react-router-dom';
+import UseIsMobile from '../../hooks/UseIsMobile';
 
 function ContactListItem(props) {
   const navigate = useNavigate();
+  const isMobile = UseIsMobile();
   const goToChattingPage= ()  => {
+    isMobile?  navigate("/"+props.contact.user_id,{ state: props.contact }) :
       navigate(props.contact.user_id,{ state: props.contact })
       // console.log(props.contact)
   }
