@@ -33,6 +33,6 @@ function isYesterday(date, comparedDate) {
     const yesterday = new Date(comparedDate.getTime() - oneDay);
     return date.toDateString() === yesterday.toDateString();
   }
-
+  
 
 export default GetTimeFromTimestamp;

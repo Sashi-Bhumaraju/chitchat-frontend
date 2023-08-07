@@ -8,15 +8,19 @@ import Modal from '../components/dailog/Modal';
 import NoChatWindow from '../components/widgets/NoChatWindow';
 import Chat from '../components/screens/Chat';
 import UserList from '../components/screens/UserList';
+import UseIsMobile from '../hooks/UseIsMobile';
 
 
 function RoutesComponent ({ component: Component, ...rest }) {
     
+      
       const user = useSelector((state)=>{
           return state.user.data
       })
+
+      const isMobile = UseIsMobile();
     
-      return  <Routes>
+      return !isMobile?  <Routes>
                     <Route path="/" element={ <Navigate to="/auth"/> } />
                     <Route path="/auth" element = { user? <Navigate to="/home"/> : <Auth/> } />
                     <Route path="/home" element = { user? <Home/> : <Navigate to="/auth"/>} > 
@@ -39,6 +43,23 @@ function RoutesComponent ({ component: Component, ...rest }) {
                     </Route>
                     <Route path='*' element={<Navigate to="/auth"/> }/>
               </Routes>
+
+:
+            <Routes>
+                <Route path="/" element={ <Navigate to="/auth"/> } />
+                <Route path="/auth" element = { user? <Navigate to="/home"/> : <Auth/> } />
+                <Route path="/home" element = { user? <Home/> : <Navigate to="/auth"/>} > 
+                            <Route path='search_user' element ={<Modal componentName={"Search"}> <UserList/> </Modal>}/>
+                            <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>
+                </Route>
+                <Route path="/:chatId" element={<Chat/>}> 
+                        <Route path=':user_id' element ={<Modal componentName={"Profile"}><Profile/></Modal>}/>
+                </Route>
+                <Route path='*' element={<Navigate to="/auth"/> }/>
+            </Routes>
+
+
+     
  }
 
 export default RoutesComponent;

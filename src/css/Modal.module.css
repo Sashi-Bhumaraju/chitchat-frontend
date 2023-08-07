@@ -124,7 +124,7 @@ dialog::backdrop {
    }
 
   .modal_body {
-    max-width: calc(450px - 20px);
+    /* max-width: calc(450px - 20px); */
     min-width: 0px;
     /* background-color: red; */
   }
