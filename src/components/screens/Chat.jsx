@@ -23,10 +23,10 @@ function Chat() {
   const messages = useSelector((state)=>{return state.chat.data})
   const dispatch = useDispatch();
 
-  useEffect( ()=>{
-    runGetChatList({chatId,dispatch})
-    chatId && setChatIdRef(chatId);
-    friend && setFriendRef(friend);
+  useEffect( () => {  
+    runGetChatList({chatId,dispatch}) 
+    chatId && setChatIdRef(chatId); 
+    friend && setFriendRef(friend); 
   },[chatId,friend] )
 
 //  console.log(chatMessagesQuery)

@@ -51,6 +51,9 @@
     /* align-items: center; */
     /* background-color: red; */
     line-height:18px;
+    text-overflow:clip;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .contact_list_item_heading_name {

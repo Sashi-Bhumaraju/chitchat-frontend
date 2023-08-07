@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {  GetContactsListOfUserQuery } from '../../store'
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import ContactListItem from '../widgets/ContactListItem';
@@ -12,6 +12,10 @@ import { useSelector } from 'react-redux';
 import { BiMessageSquareAdd } from 'react-icons/bi'
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContactsBridge from '../../bridge/ContactsBridge';
+// import { onSnapshot } from 'firebase/firestore';
+import { db } from '../../firebase-config';
+import { CollectionReference, and, collection, doc, getDoc, getDocs, limit, onSnapshot, or, orderBy, query, startAfter, startAt, where } from "firebase/firestore";
+import { LocalStorageGet } from '../../util/LocalStorage';
 
 function ContactList() {
   
@@ -29,6 +33,20 @@ function ContactList() {
   const searchUser = () => {    
         navigate(currentLoaction +"/search_user")      
   }    
+
+  // useEffect(()=>{
+  //   const user = LocalStorageGet("chitchat.user");
+  //   const ContactsCollectionRef = collection(db,"contacts"); 
+  //    const q = query( ContactsCollectionRef, orderBy("timestamp","desc"), or( where('user_id_1','==',user.user_id), where('user_id_2','==',user.user_id) ) );  
+  //     getDocs( q)
+  //   const unsubscribe = onSnapshot(GetContactsListOfUserQuery(), (snapshot) => {
+  //     var listOfResponseRows = snapshot.docs.map((doc) => { 
+  //         // return  { id: doc.id, ...doc.data() }
+  //     });
+  // },
+  // (error)=>(error));
+  // })
+
 
   return (    
     <section className={styles.contact_list}>    

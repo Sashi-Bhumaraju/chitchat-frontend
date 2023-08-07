@@ -42,35 +42,37 @@ const GetChatList = createAsyncThunk("user/getAllMessages", async (obj) => {
 
 
 const SendMessageToUser = createAsyncThunk("send/message",async (rawMessageObject) => { 
-   const messagesCollectionRef =  collection(db,"messages"); 
-   const user = LocalStorageGet("chitchat.user"); 
-   const newMessage = new Message(); 
-   newMessage.content = rawMessageObject.content; 
-   newMessage.recipient_id = rawMessageObject.friend_id; 
-   newMessage.sender_id = user.user_id; 
-   newMessage.is_read = false; 
-   newMessage.timestamp =  GetTimeStamp()
-   const JsonMessageObject = JSON.parse(JSON.stringify(newMessage)); 
-   await addDoc(messagesCollectionRef,JsonMessageObject); 
 
-   const newContact = new Contact(); 
-   newContact.recent_content =  rawMessageObject.content; 
-   newContact.timestamp =  GetTimeStamp(); 
-   newContact.user_id_1 = user.user_id; 
-   newContact.username_1 = user.username; 
-   newContact.photo_url_1 = user.photo_url; 
-   newContact.user_id_2 = rawMessageObject.friend_id;
-   newContact.username_2 = rawMessageObject.friend_username; 
-   newContact.photo_url_2 = rawMessageObject.friend_photo_url; 
+    const user = LocalStorageGet("chitchat.user");  
 
-   const JsonContactObject = JSON.parse(JSON.stringify(newContact)); 
-   if( rawMessageObject.contact_id ) {  
-    const contactDocId =  doc(db,"contacts",rawMessageObject.contact_id); 
-    await setDoc(contactDocId,JsonContactObject)  }
-  else {
-    const contactDocId = collection(db,"contacts"); 
-    await addDoc(contactDocId,JsonContactObject)}
-   
+    const messagesCollectionRef =  collection(db,"messages"); 
+    const message = {
+            content : rawMessageObject.content, 
+            recipient_id : rawMessageObject.friend_id,
+            sender_id : user.user_id, 
+            is_read : false, 
+            timestamp : serverTimestamp()
+    }
+    await addDoc(messagesCollectionRef,message); 
+
+
+    const newContact1 = {
+            timestamp : serverTimestamp(), 
+            recent_content : rawMessageObject.content,
+            user_id_1 : user.user_id, 
+            username_1 : user.username, 
+            photo_url_1 : user.photo_url, 
+            user_id_2 : rawMessageObject.friend_id,   
+            username_2 : rawMessageObject.friend_username, 
+            photo_url_2 : rawMessageObject.friend_photo_url 
+    }
+
+    if( rawMessageObject.contact_id ) {  
+        const contactDocId =  doc(db,"contacts",rawMessageObject.contact_id); 
+        await setDoc(contactDocId,newContact1)  }
+    else {
+        const contactDocId = collection(db,"contacts"); 
+        await addDoc(contactDocId,newContact1)}
 })
 
 export { GetChatListOfUserQuery, SendMessageToUser, GetChatList }

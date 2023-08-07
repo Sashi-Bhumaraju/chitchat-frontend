@@ -1,31 +1,38 @@
-function GetTimeFromTimestamp(timestamp) {
-    const firebaseTime = timestamp.toDate();
-    const currentTime = new Date();
-    
-    // If it's today, display only the time
-    if (isToday(firebaseTime, currentTime)) {
-      return firebaseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+
+
+function GetTimeFromTimestamp(firebaseTimestamp) {
+    if(!firebaseTimestamp) return null;
+    const date = new Date(firebaseTimestamp.seconds * 1000);
+    const now = new Date();
+  
+    // Check if the timestamp date is today
+    if (date.toDateString() === now.toDateString()) {
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes();
+      const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
+      return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${amOrPm}`;
+    } else if (isYesterday(date, now)) {
+      // Check if the timestamp date is yesterday
+      const hours = date.getHours() % 12 || 12;
+      const minutes = date.getMinutes();
+      const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
+      return `Yesterday, ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')} ${amOrPm}`;
+    } else {
+      // If it's not today or yesterday, display the full date in WhatsApp-like format
+      const day = date.getDate();
+      const month = date.toLocaleString('default', { month: 'short' });
+      const year = date.getFullYear();
+      return `${day} ${month} ${year}`;
     }
-    
-    // If it's yesterday, display "Yesterday" and the time
-    if (isYesterday(firebaseTime, currentTime)) {
-      return `Yesterday, ${firebaseTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-    }
-    
-    // If it's in the past, display the date and time
-    return firebaseTime.toLocaleString();
+}
+
+// Function to check if a date is yesterday compared to another date
+function isYesterday(date, comparedDate) {
+    const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
+    const yesterday = new Date(comparedDate.getTime() - oneDay);
+    return date.toDateString() === yesterday.toDateString();
   }
-  
-  function isToday(date1, date2) {
-    return date1.getDate() === date2.getDate() &&
-           date1.getMonth() === date2.getMonth() &&
-           date1.getFullYear() === date2.getFullYear();
-  }
-  
-  function isYesterday(date1, date2) {
-    const oneDay = 24 * 60 * 60 * 1000;
-    const diffDays = Math.round(Math.abs((date1 - date2) / oneDay));
-    return diffDays === 1;
-  }
-  
-  export { GetTimeFromTimestamp };
+
+
+export default GetTimeFromTimestamp;
