@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { GetContactsListOfUserQuery, getAllContactsOfuser } from '../store';
 import UseCollectionData from '../hooks/UseCollectionData';
 
-function ContactsBridge() {
+const  ContactsBridge = () => {
     const [getContacts, isLoading, error] = UseCollectionData(GetContactsListOfUserQuery());
     const dispatch = useDispatch();
     useEffect(()=>{

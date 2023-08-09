@@ -9,19 +9,16 @@ import NoChatWindow from '../components/widgets/NoChatWindow';
 import Chat from '../components/screens/Chat';
 import UserList from '../components/screens/UserList';
 import UseIsMobile from '../hooks/UseIsMobile';
+import ContactsBridge from '../bridge/ContactsBridge';
 
 
 function RoutesComponent ({ component: Component, ...rest }) {
-    
       
       const user = useSelector((state)=> state.user.data)
       const isMobile = UseIsMobile();
-      const navigate = useNavigate()
-
-      useEffect(()=>{
-        navigate("/home/s") 
-      },[isMobile])
-
+      const navigate = useNavigate();
+      user && ContactsBridge();
+      useEffect(()=>{ navigate("/home/s") },[isMobile])
     
       return !isMobile?  <Routes>
                     <Route path="/" element={ <Navigate to="/auth"/> } />
