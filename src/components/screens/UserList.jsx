@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 function UserList() {   
 
   const [runGetAllSearchedUsers, data, loading, error] = UseThunk(GetAllSearchedUsers);   
-  const [SearchBar, searchedValue] = UseSearchBar('search user');  
+  const [SearchBar, searchedValue] = UseSearchBar('search user by email');  
   const currentUser = useSelector((state)=>{ return state.user.data })
   useEffect(()=>{ searchedValue.trim().length != 0 && runGetAllSearchedUsers(searchedValue) },[searchedValue])  
   const listOfusers =  data && data.map((user)=>{

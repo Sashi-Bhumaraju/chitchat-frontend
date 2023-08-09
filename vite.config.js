@@ -31,6 +31,20 @@ export default defineConfig({
               type:"image/png",
               purpose:"any maskable"
           }]
+      },
+      workbox: {
+        runtimeCaching: [{
+          urlPattern: ({ url }) => {
+            return url.pathname.startsWith("/api");
+          },
+          handler: "CacheFirst" ,
+          options: {
+            cacheName: "api-cache",
+            cacheableResponse: { 
+              statuses: [0,200]
+            }
+          }
+        }]
       }
     })
   ],

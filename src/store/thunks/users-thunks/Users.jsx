@@ -35,7 +35,7 @@ const GetAllUsers = createAsyncThunk("user/getAll", async () => {
 }) 
 
 const GetAllSearchedUsers = createAsyncThunk("user/getAll/search", async (searchKey) => { 
-    searchKey = searchKey.trim()
+    searchKey = searchKey.toLowerCase().trim()
     const collectionRef = collection(db,"users"); 
     const q = query( collectionRef,   and( where('email', '>=', searchKey), where('email', '<=', searchKey+ '\uf8ff')), limit(100)); 
     const usersSnapShot = await getDocs(q); 

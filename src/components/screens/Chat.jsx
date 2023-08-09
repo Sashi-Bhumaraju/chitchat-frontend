@@ -49,7 +49,7 @@ function Chat() {
         <div className={styles.empty_chat}>     
             <NoChatWindow/>
         </div>
-        { !messages && "loadindg" } 
+        { !messages && "" } 
         { messages && messageswidget }    
         <div ref={scrollToBottomPointRef} />
         <SendMessage friend = {friendRef} scrollBottom = {scrollToBottom} />  

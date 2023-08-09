@@ -16,12 +16,12 @@ function Profile() {
     runGetUser(user_id);  
   }, [user_id]);  
 
-  if(isLoading) return "loading"
+  if(isLoading) return ""
   return (
      <section className={styles.profile_screen}>
         {/* {JSON.stringify(fetchedUser)} */}
         <div className={styles.profile_screen_header} >
-            <img src={userData.photo_url} alt='profile photo'></img>
+            <img src={userData.photo_url} alt=''></img>
             <div className={styles.profile_screen_header_username }>{userData.username}</div>
         </div>
         <div className={styles.profile_screen_body}>
