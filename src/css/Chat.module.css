@@ -9,6 +9,7 @@
     overflow-y: auto;
     position: relative;
     color: white;
+    background-color: var(--primary-color);
     /* transform: scaleY(-1) */
 }
 
@@ -19,3 +20,10 @@
     height: calc( 100vh - 105px);
 }
 
+@media (max-width: 749px) { 
+    .chat { 
+        width: 100%; 
+        height: calc(100% - 50px);  
+        margin-bottom: 50px;
+    }
+}

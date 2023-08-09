@@ -26,7 +26,7 @@ function SendMessage(props) {
   return (
       <form className={styles.send_message} onSubmit={submitMessage}>
           <div className={styles.send_message_input_box}> 
-              <input value={content} onChange={handleContentChange} placeholder='Type a message' autoFocus  ></input>
+              <input value={content} onChange={handleContentChange} placeholder='Type a message' ></input>
           </div>
           <div  className={styles.send_message_submit}  onClick={submitMessage} ><VscSend/></div>
       </form>

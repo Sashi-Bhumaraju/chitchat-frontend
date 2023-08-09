@@ -58,3 +58,30 @@ input {
 .send_message_submit:hover {
     background-color: var(--territary-color);
 }
+
+@media (max-width: 749px) {
+    .send_message_input_box {
+        width: calc(100% - 55px);
+        margin: 0px 5px;
+        height: 85%;
+        background-color: var(--territary-color);
+        border-radius: 60px;
+    }
+
+    .send_message_submit {
+        border-radius: 50%;
+        font-size: 18px;
+        border-radius: 5px;
+        background-color: var(--accet-color);
+        border-radius: 50%;
+    }
+
+    .send_message {
+        position: fixed;
+    }
+
+    .send_message_submit:hover {
+        background-color: var(--accet-color);
+    }
+    
+}
