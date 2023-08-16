@@ -10,6 +10,8 @@ import Chat from '../components/screens/Chat';
 import UserList from '../components/screens/UserList';
 import UseIsMobile from '../hooks/UseIsMobile';
 import ContactsBridge from '../bridge/ContactsBridge';
+import { NotificationAlert, NotificationPermission } from '../notification/NotificationAlert';
+import UseNotification from '../hooks/UseNotification';
 
 
 function RoutesComponent ({ component: Component, ...rest }) {
@@ -18,6 +20,8 @@ function RoutesComponent ({ component: Component, ...rest }) {
       const isMobile = UseIsMobile();
       const navigate = useNavigate();
       user && ContactsBridge();
+      user &&  NotificationPermission();
+      user &&  UseNotification();
       useEffect(()=>{ navigate("/home/s") },[isMobile])
     
       return !isMobile?  <Routes>

@@ -64,7 +64,9 @@ const SendMessageToUser = createAsyncThunk("send/message",async (rawMessageObjec
             photo_url_1 : user.photo_url, 
             user_id_2 : rawMessageObject.friend_id,   
             username_2 : rawMessageObject.friend_username, 
-            photo_url_2 : rawMessageObject.friend_photo_url 
+            photo_url_2 : rawMessageObject.friend_photo_url,
+            recent_content_user_id : user.user_id
+
     }
 
     if( rawMessageObject.contact_id ) {  

@@ -11,7 +11,7 @@ function SendMessage(props) {
   const [content,handleContentChange, resetContentChange] = UseInputState("");
   const [runSendMessageToUser, respondData, isLoading, error] = UseThunk(SendMessageToUser);
   const contact = useSelector((state) => {   if (state.contact.data != null && state.contact.data.length != 0){ return (state.contact.data.find((conatct)=> conatct.user_id_1 === props.friend.user_id ||  conatct.user_id_2 === props.friend.user_id))} })
-  console.log(contact,"sasi")
+  // console.log(contact,"sasi")
   const submitMessage =  (event) => { 
     event.preventDefault(); 
 

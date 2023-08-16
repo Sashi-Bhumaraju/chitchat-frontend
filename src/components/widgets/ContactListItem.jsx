@@ -11,7 +11,7 @@ function ContactListItem(props) {
       navigate(props.contact.user_id,{ state: props.contact })
       // console.log(props.contact)
   }
-  console.log(props.contact)
+  // console.log(props.contact)
   return (
     <div className={styles.contact_list_item} onClick={goToChattingPage}>
 

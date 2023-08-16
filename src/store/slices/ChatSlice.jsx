@@ -11,7 +11,7 @@ const ChatSlice = createSlice({
 
     reducers: {
         GetAllChatList: (state, action) => {    
-            console.log("inside  reducer",action.payload)
+            // console.log("inside  reducer",action.payload)
             const chatList = action.payload;              
             state.data = chatList      
         }   
