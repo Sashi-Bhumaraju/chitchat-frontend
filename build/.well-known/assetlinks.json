@@ -1,6 +1,9 @@
 
   [{
     "relation": ["delegate_permission/common.handle_all_urls"],
-    "target" : { "namespace": "android_app", "package_name": "app.web.chitchat-hub",
-                 "sha256_cert_fingerprints": ["3C:D3:CF:70:4B:50:C4:09:0B:BB:21:A8:88:81:B2:B8:85:19:63:FD:B2:D2:46:5C:F7:91:9D:62:F0:C6:7F:D5"] }
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.web.chitchat_hub.twa",
+      "sha256_cert_fingerprints": ["", "3C:D3:CF:70:4B:50:C4:09:0B:BB:21:A8:88:81:B2:B8:85:19:63:FD:B2:D2:46:5C:F7:91:9D:62:F0:C6:7F:D5"]
+    }
   }]
